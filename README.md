@@ -8,3 +8,5 @@ Nginx+fastDFS+fastCGI+MySQL+Redis
 - 0217更新
   - 增加doc 
   - 预备的数据库表
+  - 上传所有用到的安装包
+  - 增加项目所需要的html文件
