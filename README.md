@@ -10,3 +10,7 @@ Nginx+fastDFS+fastCGI+MySQL+Redis
   - 预备的数据库表
   - 上传所有用到的安装包
   - 增加项目所需要的html文件
+- 0216更新
+  - 上传源文件夹src
+  - 上传头文件夹include
+  - 更新Makefile
