@@ -1,0 +1,64 @@
+建表user
+create table user (
+    -> id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT ,	//主键，自动递增
+    -> name VARCHAR (128) NOT NULL,
+    -> nickname VARCHAR (128) NOT NULL,
+    -> password VARCHAR (128) NOT NULL,
+    -> phone VARCHAR (15) NOT NULL,
+    -> createtime VARCHAR (128),
+    -> email VARCHAR (100),
+    -> CONSTRAINT uq_nickname UNIQUE (nickname),	//唯一约束
+    -> CONSTRAINT uq_name UNIQUE (name)			//唯一约束
+    -> );
+
+插入数据
+INSERT into user (name, nickname, password, phone, createtime, email)
+    -> values ('jun', 'baba', '123456', '110', '2020-02-14 16:18:30', '110@qq.com');
+
+查找数据
+select * from user where name = 'jun';
+
+建表file_info
+create table file_info (
+    -> md5 VARCHAR (200) not null primary key,
+    -> file_id VARCHAR (256) not null,
+    -> url varchar (512) not null,
+    -> size BIGINT ,
+    -> type varchar (20),
+    -> count INT
+    -> );
+
+建表user_file_list
+create table user_file_list (
+    -> user VARCHAR (128) not null,
+    -> md5 VARCHAR (200) not null,
+    -> createtime VARCHAR (128),
+    -> filename VARCHAR (128),
+    -> share_status INT,
+    -> pv INT
+    -> );
+
+建表user_file_count
+create table user_file_count (
+    -> user VARCHAR (128) not null PRIMARY key,
+    -> count int
+    -> );
+
+更新数据
+UPDATE user_file_count SET count = 10 WHERE user = "mike";
+
+删除数据
+DELETE FROM  user_file_count WHERE user = "mike";
+
+建表share_file_list
+CREATE TABLE share_file_list (
+    -> user VARCHAR (128) not null,
+    -> md5 VARCHAR (200) not null,
+    -> createtime VARCHAR (128),
+    -> filename VARCHAR (128),
+    -> pv INT
+    -> );
+
+
+
+
