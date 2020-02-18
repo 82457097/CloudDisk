@@ -1,15 +1,15 @@
-#include "main.h"
+#include "uploadMain.h"
 
 int main (int argc, char** argv) {
     MysqlInit(DB, TABLE_DATA);  /* 初始化数据库 */
 
     while (FCGI_Accept() >= 0) {
         int len = 0;
-        char *content_len = getenv("CONTENT_LENGTH");
+        char *contentLen = getenv("CONTENT_LENGTH");
         printf("Content-type: text/html\r\n\r\n");
 
-        if (content_len != NULL)
-            len = strtol(content_len, NULL, 10);  /* str -> int */
+        if (contentLen != NULL)
+            len = strtol(contentLen, NULL, 10);  /* str -> int */
 
         MA_INFO("%s: %d", "接收数据长度是", len);
         if (len <= 0) {
@@ -35,7 +35,7 @@ int main (int argc, char** argv) {
             MA_INFO("%s", "接收完毕...");
             end = p;  /* end 指向缓存块末尾 */
             MA_INFO("%s", "解析并且保存数据");
-            ExtractDataAndSave(begin, end, len, filename);  /* 解析数据 */
+            ParseDataAndSave(begin, end, len, filename);  /* 解析数据 */
 
             /* 文件上传到fastdfs */
             MA_INFO("%s", "上传文件到 fdfs ");
@@ -64,7 +64,7 @@ Content-Type: image/png\r\n
 PNG ... content of chrome.png ...
 ------WebKitFormBoundaryrGKCBY7qhFd3TrwA--\r\n
  */
-static int ExtractDataAndSave(char* begin, char* end, int len, char* filename) {
+static int ParseDataAndSave(char* begin, char* end, int len, char* filename) {
     char *p = NULL;
     
     /* 解析第一行 */
@@ -110,9 +110,7 @@ static int ExtractDataAndSave(char* begin, char* end, int len, char* filename) {
 }
 
 
-static char* GetPointerOfBorder(char* content, \
-                                   int len, \
-                                   char* boundary) {
+static char* GetPointerOfBorder(char* content, int len, char* boundary) {
     /* 参数校验 */
     if (content == NULL || len <= 0 || boundary == NULL)
         return NULL;

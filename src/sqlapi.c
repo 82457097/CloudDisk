@@ -17,7 +17,7 @@ MYSQL* MysqlConnect(char* username, char* password, char* dbname) {
  *成功 返回 非 0 数字
  *失败 返回 -1 
 *******************/
-int MysqlFindall(MYSQL* conn, const char* sql, YOU_LINE_DATA* data) {
+int MysqlFindall(MYSQL* conn, const char* sql, FILE_DATA* data) {
     
     int i = 0, count = 0;
     MYSQL_RES *result;
@@ -92,44 +92,3 @@ void MysqlInit(char* dbname, char* tablename) {
         SQL_INFO("%s", "数据表创建失败, 也许这个数据表已经存在");
     }
 }
-
-/* usage1 */
-// int main(int argc, char **argv)
-// {
-//     MYSQL *conn = you_connect("root", "123456", "guan");
-//     if (conn == NULL) goto end;
-  
-//     YOU_LINE data[10] = {0};
-//     int num = you_findall(conn, "select * from stu where age 9", data);
-    
-//     // you_insert(conn, "insert into stu values('he', 33)");
-
-//     // int num = you_delete(conn, "delete from stu where name = 'he'");
-//     // printf("%d\n", num);
-    
-//     you_disconnect(conn);  /* 释放连接 */
-
-//     int  i = 0;
-//     for (i = 0; i<num; i++) {
-//         printf("%s %s\n", data[i].name, data[i].age);
-//     }
-//     return 0;
-
-// end:
-//     printf("%s\n", "error");
-//     return -1;
-// }
-
-/* usage2 */
-// int main(int argc, char** argv) {
-//     init("youguan", "data");
-//     SQL_DEBUG("%s", "完成数据库初始化");
-
-//     MYSQL* conn = you_connect("root", "123456", "youguan");
-//     YOU_LINE_DATA data[1024] = {0};
-//     int num = you_findall(conn, "select * from data", data);
-//     int i = 0;
-//     for (i = 0; i < num; i++) {
-//         printf("%d, %s, %s\n", data[i].id, data[i].filename, data[i].fileid);
-//     }
-// }

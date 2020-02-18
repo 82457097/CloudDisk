@@ -15,11 +15,11 @@ typedef struct {
     int id;
     char filename[1024];
     char  fileid[1024];
-} YOU_LINE_DATA;
+} FILE_DATA;
 
 void MysqlInit(char* dbname, char* tablename);
 MYSQL* MysqlConnect(char* usernmae, char* password, char*dbname);
-int MysqlFindall(MYSQL* conn, const char* sql, YOU_LINE_DATA* data);
+int MysqlFindall(MYSQL* conn, const char* sql, FILE_DATA* data);
 int MysqlExecute(MYSQL* conn, const char* sql);
 void MysqlDisconnect(MYSQL* conn);
 

@@ -1,10 +1,7 @@
 #include "download.h"
 
 
-int Download(const char* client_conf_file,
-             const char* file_id, 
-             char* filename)
-{
+int Download(const char* client_conf_file, const char* file_id, char* filename) {
     int result;
 	ConnectionInfo *p_tracker_server = NULL;
 	int64_t file_size;
@@ -12,7 +9,7 @@ int Download(const char* client_conf_file,
 	int64_t download_bytes = 0;
 
     DOWN_DEBUG("%s", "初始化配置文件");
-	if ((result=fdfs_client_init(client_conf_file)) != 0) {
+	if ((result = fdfs_client_init(client_conf_file)) != 0) {
 		return result;
 	}
     
