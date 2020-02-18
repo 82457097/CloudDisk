@@ -9,6 +9,7 @@ Nginx+fastDFS+fastCGI+MySQL+Redis
 - 0218更新
   - 修改Makefile
   - 增加展示所有文件的新功能（未测试成功）
+  - 增加源文件showFiles.c showFiles.h
 
 - 0217更新
   - 增加doc 
