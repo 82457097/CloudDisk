@@ -23,7 +23,7 @@
 #define MA_INFO(fmt, x...) INFO("fdfs", "main", fmt, ##x)
 #define MA_ERROR(fmt, x...) ERROR("fdfs", "main", fmt, ##x)
 
-static int ExtractDataAndSave(char* begin, char* end, int len, char* filename);
+static int ParseDataAndSave(char* begin, char* end, int len, char* filename);
 
 static char* GetPointerOfBorder(char* content, int len, char* boundary);
 
