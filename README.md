@@ -5,6 +5,11 @@ CSDN博客地址https://blog.csdn.net/weixin_44816732/article/details/104346199
 Nginx+fastDFS+fastCGI+MySQL+Redis
 
 # 项目更新记录
+- 0819更新
+  - 修改完善Install.sh文件
+
+- 0818更新
+  - 增加一键安装配置脚本Install.sh
 
 - 0218更新
   - 修改Makefile
