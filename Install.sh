@@ -35,7 +35,7 @@ OsCheck() {
 OsCheck
 echo "-----------------------------------------------"
 
-Install_nginx() {
+InstallNginx() {
 	NGINX_PAC=nginx-1.17.8.tar.gz
 
 	echo "Download nginx..."
@@ -71,23 +71,25 @@ if [ -d $NGINX_POS ]; then
 	echo "----------------------------------------------"
 else
 	echo "----------------------------------------------"
-	Install_nginx
+	InstallNginx
 fi
 
 Install_libfastcommon() {
+	LFC_PAC=libfastcommon-master.zip
+	LFC_DIR=libfastcommon-master
 	echo "----------------------------------------------"
 	echo "Download FastDFS..."
 	echo "Install libfastcommon..."
-	if [ ! -d ./libfastcommon-master/ -a ! -e master.zip ]; then
+	if [ ! -d ./$LFC_DIR/ -a ! -e master.zip ]; then
 		wget $GET_LIBCOMMOM
 		unzip master.zip
-		mv master.zip libfastcommon-master.zip
+		mv master.zip $LFC_PAC
 	else
 		echo -e "${Green1}Libfastcommon has been download. $Green2"
 	fi
 
-	if [ -e ./libfastcommon-master/ ]; then
-		cd libfastcommon-master/
+	if [ -e ./$LFC_DIR/ ]; then
+		cd $LFC_DIR/
 		./make.sh clean
 		./make.sh
 		./make.sh install
@@ -106,17 +108,19 @@ else
 fi
 
 Install_fastdfs() {
+	FD_PAC=fastdfs-master.zip
+	FD_DIR=fastdfs-master
 	echo "Install fastDFS..."
-	if [ ! -e ./master.zip -a ! -d ./fastdfs-master/ ]; then
+	if [ ! -e ./master.zip -a ! -d ./$FD_DIR/ ]; then
 		wget $GET_FASTDFS
 		unzip master.zip
-		mv master.zip fastdfs-master.zip
+		mv master.zip $FD_PAC
 	else
 		echo -e "${Green1}Fastdfs has been download.$Green2" 	
 	fi
 	
-	if [ -d ./fastdfs-master/ ]; then
-		cd fastdfs-master
+	if [ -d ./$FD_DIR/ ]; then
+		cd $FD_DIR
 		./make.sh clean
 		./make.sh
 		sudo ./make.sh install
@@ -128,7 +132,7 @@ Install_fastdfs() {
 	if [ -d /etc/fdfs/ ]; then
 		cd /etc/fdfs
 		cp tracker.conf.sample tracker.conf
-		cp storage.conf.sample storage.con
+		cp storage.conf.sample storage.conf
 		cp client.conf.sample client.conf
 	fi
 	
@@ -168,7 +172,9 @@ fi
 Modify_config() {
 	FNM_DIR=fastdfs-nginx-module-master
 
-	if [ -e $FNM_DIR/src/config ]; then
+	if [ -e ./$FNM_DIR/src/config ]; then
+		sed -i '/\<ngx_module_incs/'d $FNM_DIR/src/config
+		sed -i '/\<CORE_INCS/'d	$FNM_DIR/src/config
 		sed -i '/\<ngx_module_libs/a\ngx_module_incs="/usr/include/fastdfs /usr/include/fastcommon/"' $FNM_DIR/src/config
 		sed -i '/\<NGX_ADDON_SRCS/a\CORE_INCS="$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/"' $FNM_DIR/src/config
 	else
@@ -176,8 +182,37 @@ Modify_config() {
 	fi
 }
 
-Modify_config
-echo -e "${Green1}Config modify success.$Green2"
+string=`cat fastdfs-nginx-module-master/src/config | grep "/usr/include/fastcommon/" | awk 'NR==1{print $NF}'`
+if [ "$string" != "/usr/include/fastcommon/\"" ]; then
+	Modify_config
+	echo -e "${Green1}Config modify success.$Green2"
+else
+	echo -e "${Green1}Config has been modified.$Green2"
+fi
+
+Add_fnm_to_nginx() {
+	CURPOS=`pwd`
+#	cd nginx-1.17.8/
+#	./configure --add-module=$CURPOS/fastdfs-nginx-module-master/src
+#	make
+#	make install
+	cd $NGINX_POS/sbin
+	./nginx -V
+	cd -
+	cd fastdfs-nginx-module-master/src/
+	cp mod_fastdfs.conf /etc/fdfs/
+	cd -
+	cd fastdfs-master/conf
+	cp mime.types http.conf /etc/fdfs/
+	cd -
+}
+
+Add_fnm_to_nginx
+
+
+
+
+
 
 
 
