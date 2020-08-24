@@ -5,6 +5,9 @@ CSDN博客地址https://blog.csdn.net/weixin_44816732/article/details/104346199
 Nginx+fastDFS+fastCGI+MySQL+Redis
 
 # 项目更新记录
+- 0824更新
+  - 完成上传文件cgi的编写测试，上传功能OK，页面显示有问题。
+
 - 0820更新
   - 增加用Cpp重构后的源文件（未编译测试）
   
