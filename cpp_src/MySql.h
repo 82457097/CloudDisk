@@ -1,15 +1,15 @@
 #pragma once
 #include<mysql/mysql.h>
 #include<iostream>
-#include"file.h"
+//#include"file.h"
 
 using namespace std;
 
 #define	USER			"root"
-#define	PASSWORD		"123456"
-#define	DB_NAME		"junbaba"
-#define	TABLE_NAME	"data"
-#define	SQL_LEN		2048
+#define	PASSWORD		"qwj123456"
+#define	DB_NAME			"filedata"
+#define	TABLE_NAME		"data"
+#define	SQL_LEN			2048
 
 class MySql {
 public:
@@ -23,5 +23,5 @@ public:
 
 private:
 	MYSQL* conn;
-	File file;
+	//File file;
 };

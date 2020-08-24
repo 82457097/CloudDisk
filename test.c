@@ -1,17 +1,9 @@
 #include<stdlib.h>
 #include<stdio.h>
-
-#ifdef HAVE_UNISTD_H
 #include<unistd.h>
-#endif
+#include <fcgi_stdio.h>
 
-#ifdef _WIN32
-#include<process.h>
-#else 
 extern char **environ;
-#endif
-
-#include "fcgi_stdio.h"
 
 static void PrintEnv(char *label, char **envp) {
 	printf("%s:<br>\n<pre>\n", label);

@@ -3,11 +3,14 @@
 bool MySql::MysqlInit() {
 	conn = MysqlConnect();
 	if (conn == nullptr) {
+		cout << "conn == nullptr." << endl;
 		return false;
 	}
 	char sql[SQL_LEN] = { "\0" };
 	snprintf(sql, SQL_LEN, "create database %s charset=utf8", DB_NAME);
+	//cout << sql << endl;
 	if (!MysqlQuery(sql)) {
+		cout << "query failed." << endl;
 		return false;
 	}
 	
@@ -30,7 +33,9 @@ bool MySql::MysqlFindAll() {
 }
 
 bool MySql::MysqlQuery(const char *sql) {
-	if (mysql_query(conn, sql)) {
+	int retVal = mysql_query(conn, sql);
+	cout << retVal << endl;
+	if (retVal) {
 		return false;
 	}
 
@@ -38,10 +43,7 @@ bool MySql::MysqlQuery(const char *sql) {
 }
 
 bool MySql::MysqlDisconnect() {
-	if (mysql_close(conn)) {
-		cout << "Failed to disconnect!" << endl;
-		return false;
-	}
+	mysql_close(conn);
 
 	cout << "Succesed to disconnect!" << endl;
 	return true;

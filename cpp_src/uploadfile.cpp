@@ -4,11 +4,12 @@ using namespace std;
 
 bool Upload::AcceptFile() {
 	while (fastCGI.FcgiAccept()) {
-		//获取环境变量CONTENT_LENGTH的值
+		
 		fastCGI.contentLen = getenv("CONTENT_LENGTH");
+		//cout << fastCGI.contentLen << endl;
 		//cout << "Content-type: text/html\r\n\r\n" << endl;
 
-		//将环境变量CONTENT_LENGTH的值转化为整数
+		
 		if (fastCGI.contentLen != NULL) {
 			buflen = strtol(fastCGI.contentLen, nullptr, 10);
 		}
@@ -17,13 +18,14 @@ bool Upload::AcceptFile() {
 			cout << "No data from standard input.<p>\n" << endl;
 		}
 		else {
-			int tmpch;
+			char tmpch;
+			
 			fileData = (char*)malloc(buflen);
-			pbegin = pend = ptemp;
-
+			pbegin = ptemp = fileData;
+			
 			for (int i = 0; i < buflen; ++i) {
 				if ((tmpch = getchar()) < 0) {
-					cout << "Error: Not enough bytes received on standard input<p>\n" << endl;
+					cout << "Not enough bytes received on standard input<p>\n" << endl;
 					break;
 				}
 				*ptemp = tmpch;
@@ -32,9 +34,9 @@ bool Upload::AcceptFile() {
 
 			pend = ptemp;
 		}
-
+		cout << fileData << endl;
 		ParseDataAndSave();
-		UploadFile(fileName, fileName);
+		UploadFile(fileName, fileId);
 		SaveToMysql();
 	}
 
@@ -49,19 +51,20 @@ bool Upload::ParseDataAndSave() {
 	buflen -= (ptemp - pbegin);
 	pbegin = ptemp;
 	char* pfileNameBegin = strstr(pbegin, "filename=");
-	pfileNameBegin += strlen("filename=");  /* 指向第一个双引号 */
-	char* pfileNameEnd = strchr(pfileNameBegin, '"');  /* 指向第二个双引号 */
-	strncpy(fileName, ++pfileNameBegin, pfileNameEnd - pfileNameBegin);
+	pfileNameBegin += strlen("filename=");  
+	char* pfileNameEnd = strchr(++pfileNameBegin, '"');  
+	strncpy(fileName, pfileNameBegin, pfileNameEnd - pfileNameBegin);
+	cout << fileName << endl;
 	cout << "<br>filename: %s<br>" << endl;
 
-	/* 第三行、四行 */
+
 	ptemp = strstr(pbegin, "\r\n");
 	ptemp += 2;
-	buflen -= (ptemp - pbegin);  /* 剩余长度 */
+	buflen -= (ptemp - pbegin);  
 	pbegin = ptemp;
 	ptemp = strstr(pbegin, "\r\n");
 	ptemp += 4;
-	buflen -= (ptemp - pbegin);  /* 所需数据长度 */
+	buflen -= (ptemp - pbegin);  
 
 	/* 开始正文 */
 	pbegin = ptemp;
@@ -81,44 +84,49 @@ bool Upload::ParseDataAndSave() {
 		ptemp = pend;
 	}
 
-	ptemp -= 2;  /* 退两个字符：/r/n */
+	ptemp -= 2;  
 
-	/* 本地保存 */
+
 	int fd = open(fileName, O_CREAT | O_WRONLY, 0664);
 	write(fd, pbegin, ptemp - pbegin);
 	close(fd);
-	
+
+	cout << "OK" << endl;
 	return true;
 }
 
 bool Upload::UploadFile(char *fileName, char *fileId) {
 	if (!fastDFS.FdfsClientInit()) {
-		//cout << "fdfs_client初始化失败！" << endl;
+		cout << "fastdfs initial failed." << endl;
 		return false;
 	}
 
 	if (!fastDFS.TrackerGetConnection()) {
+		cout << "tracker initial failed." << endl;
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.TrackerQueryStorageStore()) {
+		cout << "storage initial failed." << endl;
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.StorageUploadByFilename1(fileName, fileId)) {
+		cout << "StorageUploadByFilename1 initial failed." << endl;
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.TrackerCloseConnectionEx()) {
+		cout << "TrackerCloseConnectionEx initial failed." << endl;
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	fastDFS.FdfsClientDestroy();
-
+	cout << " OK" << endl;	
 	return true;
 }
 
@@ -128,7 +136,7 @@ bool Upload::SaveToMysql() {
 	snprintf(sql, SQL_LEN, "insert into %s values(NULL, '%s', '%s')", TABLE_NAME, fileName, fileId);
 	int flag = mysql.MysqlQuery(sql);
 	if (flag == 0) {
-		return false;
+		//return false;
 	}
 
 	return true;
