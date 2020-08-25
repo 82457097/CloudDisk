@@ -6,7 +6,7 @@
 using namespace std;
 
 #define	USER			"root"
-#define	PASSWORD		"qwj123456"
+#define	PASSWORD		"qwj19961202"
 #define	DB_NAME			"filedata"
 #define	TABLE_NAME		"data"
 #define	SQL_LEN			2048
@@ -21,7 +21,6 @@ public:
 	bool MysqlQuery(const char *sql);
 	bool MysqlDisconnect();
 
-private:
-	MYSQL* conn;
-	//File file;
+public:
+	MYSQL* m_conn;
 };

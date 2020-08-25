@@ -6,9 +6,7 @@ bool Upload::AcceptFile() {
 	while (fastCGI.FcgiAccept()) {
 		
 		fastCGI.contentLen = getenv("CONTENT_LENGTH");
-		//cout << fastCGI.contentLen << endl;
-		//cout << "Content-type: text/html\r\n\r\n" << endl;
-
+		printf("Content-type: text/html\r\n\r\n");
 		
 		if (fastCGI.contentLen != NULL) {
 			buflen = strtol(fastCGI.contentLen, nullptr, 10);
@@ -36,7 +34,7 @@ bool Upload::AcceptFile() {
 		}
 		cout << fileData << endl;
 		ParseDataAndSave();
-		UploadFile(fileName, fileId);
+		UploadFile(fileName);
 		SaveToMysql();
 	}
 
@@ -55,8 +53,7 @@ bool Upload::ParseDataAndSave() {
 	char* pfileNameEnd = strchr(++pfileNameBegin, '"');  
 	strncpy(fileName, pfileNameBegin, pfileNameEnd - pfileNameBegin);
 	cout << fileName << endl;
-	cout << "<br>filename: %s<br>" << endl;
-
+	printf("<br>filename: %s<br>\n", fileName);
 
 	ptemp = strstr(pbegin, "\r\n");
 	ptemp += 2;
@@ -66,7 +63,7 @@ bool Upload::ParseDataAndSave() {
 	ptemp += 4;
 	buflen -= (ptemp - pbegin);  
 
-	/* 开始正文 */
+
 	pbegin = ptemp;
 
 	int boderLen = strlen(fastCGI.boundary);
@@ -91,11 +88,10 @@ bool Upload::ParseDataAndSave() {
 	write(fd, pbegin, ptemp - pbegin);
 	close(fd);
 
-	cout << "OK" << endl;
 	return true;
 }
 
-bool Upload::UploadFile(char *fileName, char *fileId) {
+bool Upload::UploadFile(char *fileName) {
 	if (!fastDFS.FdfsClientInit()) {
 		cout << "fastdfs initial failed." << endl;
 		return false;
@@ -126,18 +122,19 @@ bool Upload::UploadFile(char *fileName, char *fileId) {
 	}
 
 	fastDFS.FdfsClientDestroy();
-	cout << " OK" << endl;	
+	printf("<br>fileid: %s\n<br>", fileId);
+	
 	return true;
 }
 
 bool Upload::SaveToMysql() {
-	//mysql.MysqlConnect();
-	char sql[SQL_LEN] = { "\0" };
+	char sql[SQL_LEN] = { '\0' };
 	snprintf(sql, SQL_LEN, "insert into %s values(NULL, '%s', '%s')", TABLE_NAME, fileName, fileId);
+	cout << sql << endl;
 	int flag = mysql.MysqlQuery(sql);
 	if (flag == 0) {
-		//return false;
+		return true;
 	}
 
-	return true;
+	return false;
 }
