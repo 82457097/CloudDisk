@@ -38,7 +38,3 @@ Nginx+fastDFS+fastCGI+MySQL+Redis
   - 上传头文件夹include
   - 更新Makefile
 
-# 一、项目介绍
-先附上项目Github地址[https://github.com/82457097/CloudDisk](https://github.com/82457097/CloudDisk)；
-这是我在网上找到的一个项目，觉得不错就模仿着做了一下~
-分布式网络云盘，其
