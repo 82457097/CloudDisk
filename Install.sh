@@ -169,6 +169,8 @@ else
 	echo -e "${Green1}Fastdfs_nginx_module has been download.$Green2"
 fi
 
+
+
 Modify_config() {
 	FNM_DIR=fastdfs-nginx-module-master
 
@@ -192,10 +194,10 @@ fi
 
 Add_fnm_to_nginx() {
 	CURPOS=`pwd`
-#	cd nginx-1.17.8/
-#	./configure --add-module=$CURPOS/fastdfs-nginx-module-master/src
-#	make
-#	make install
+	cd nginx-1.17.8/
+	./configure --add-module=$CURPOS/fastdfs-nginx-module-master/src
+	make
+	make install
 	cd $NGINX_POS/sbin
 	./nginx -V
 	cd -
