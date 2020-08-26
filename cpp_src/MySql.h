@@ -21,6 +21,6 @@ public:
 	bool MysqlQuery(const char *sql);
 	bool MysqlDisconnect();
 
-public:
+private:
 	MYSQL* m_conn;
 };
