@@ -15,5 +15,5 @@ else
 fi
 
 
-sed -i '/\<server_name/a\location / {\n    root   work/zyFile2;\n    index  demo.html;\n}\n\nlocation /upload {\n    fastcgi_pass 127.0.0.1:10003;\n    include fastcgi.conf;\n}' \
-	${NGINX_PATH}/conf/nginx.conf
+#sed -i '/\<server_name/a\location / {\n    root   work/zyFile2;\n    index  demo.html;\n}\n\nlocation /upload {\n    fastcgi_pass 127.0.0.1:10003;\n    include fastcgi.conf;\n}' \
+#	${NGINX_PATH}/conf/nginx.conf
