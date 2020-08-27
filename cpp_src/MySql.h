@@ -1,7 +1,7 @@
 #pragma once
 #include<mysql/mysql.h>
 #include<iostream>
-//#include"file.h"
+#include"logger.h"
 
 using namespace std;
 
@@ -22,5 +22,6 @@ public:
 	bool MysqlDisconnect();
 
 private:
+	Logger mylog;
 	MYSQL* m_conn;
 };

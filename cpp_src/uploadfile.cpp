@@ -23,7 +23,8 @@ bool Upload::AcceptFile() {
 			
 			for (int i = 0; i < buflen; ++i) {
 				if ((tmpch = getchar()) < 0) {
-					cout << "Not enough bytes received on standard input<p>\n" << endl;
+					LOG("receive filedata successful.");
+					mylog.WriteMsgToFile(mylog.m_message);
 					break;
 				}
 				*ptemp = tmpch;
@@ -32,10 +33,12 @@ bool Upload::AcceptFile() {
 
 			pend = ptemp;
 		}
-		cout << fileData << endl;
+		//cout << fileData << endl;
 		ParseDataAndSave();
 		UploadFile(fileName);
 		SaveToMysql();
+		free(fileData);
+		unlink(fileName);
 	}
 
 	return true;
@@ -52,7 +55,7 @@ bool Upload::ParseDataAndSave() {
 	pfileNameBegin += strlen("filename=");  
 	char* pfileNameEnd = strchr(++pfileNameBegin, '"');  
 	strncpy(fileName, pfileNameBegin, pfileNameEnd - pfileNameBegin);
-	cout << fileName << endl;
+	//cout << fileName << endl;
 	printf("<br>filename: %s<br>\n", fileName);
 
 	ptemp = strstr(pbegin, "\r\n");
@@ -91,7 +94,7 @@ bool Upload::ParseDataAndSave() {
 	return true;
 }
 
-bool Upload::UploadFile(char *fileName) {
+bool Upload::UploadFile(char* fileName) {
 	if (!fastDFS.FdfsClientInit()) {
 		cout << "fastdfs initial failed." << endl;
 		return false;

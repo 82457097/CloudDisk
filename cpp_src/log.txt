@@ -1,0 +1,51 @@
+[2020.08.27] [14:16:59] Session opened.[2020.08.27] [14:16:59] Session opened.[2020.08.27] [14:16:59] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:21:19] Session opened.[2020.08.27] [14:21:19] Session opened.[2020.08.27] [14:21:19] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:22:00] Session opened.[2020.08.27] [14:22:00] Session opened.[2020.08.27] [14:22:00] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:23:59] Session opened.[2020.08.27] [14:23:59] Session opened.[2020.08.27] [14:23:59] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:29:37] Session opened.
+[2020.08.27] [14:29:37] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:38:22] Session opened.
+[2020.08.27] [14:38:22] Session opened.
+[2020.08.27] [14:38:22] [./MySql.cpp:MysqlConnect:35][LOG_NORMAL]get conn Successful.
+
+[2020.08.27] [14:38:22] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:38:39] [./uploadfile.cpp:ParseDataAndSave:59][LOG_NORMAL]filename: no PC choice.png
+
+[2020.08.27] [14:38:39] [./MySql.cpp:MysqlQuery:52][LOG_NORMAL]query sql Successful.
+
+[2020.08.27] [14:41:03] Session opened.
+
+[2020.08.27] [14:41:03] Session opened.
+
+[2020.08.27] [14:41:03] [./MySql.cpp:MysqlConnect:35][LOG_NORMAL]get conn Successful.
+
+[2020.08.27] [14:41:03] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:42:02] Session opened.
+
+[2020.08.27] [14:42:02] Session opened.
+
+[2020.08.27] [14:42:02] [./MySql.cpp:MysqlConnect:35][LOG_NORMAL]get conn Successful.
+
+[2020.08.27] [14:42:02] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:42:10] [./MySql.cpp:MysqlQuery:52][LOG_NORMAL]query sql Successful.
+
+[2020.08.27] [14:45:21] Session opened.
+
+[2020.08.27] [14:45:21] Session opened.
+
+[2020.08.27] [14:45:21] [./MySql.cpp:MysqlConnect:35][LOG_NORMAL]get conn Successful.
+
+[2020.08.27] [14:45:21] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
+
+[2020.08.27] [14:46:11] [./uploadfile.cpp:AcceptFile:26][LOG_NORMAL]receive filedata successful.
+
+[2020.08.27] [14:46:11] [./MySql.cpp:MysqlQuery:52][LOG_NORMAL]query sql Successful.
+

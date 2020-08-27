@@ -30,7 +30,7 @@ bool FastDFS::TrackerQueryStorageStore() {
 	return true;
 }
 
-bool FastDFS::StorageUploadByFilename1(char *fileName, char *fileId) {
+bool FastDFS::StorageUploadByFilename1(char* fileName, char *fileId) {
 	*this->groupName = '\0';
 	if (storage_upload_by_filename1(this->ptrackerServer,
 								&this->storageServer,

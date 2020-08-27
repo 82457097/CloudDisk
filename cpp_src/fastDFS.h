@@ -20,7 +20,7 @@ public:
 
 	bool TrackerQueryStorageStore();
 
-	bool StorageUploadByFilename1(char *fileName, char *fileId);
+	bool StorageUploadByFilename1(char* fileName, char *fileId);
 
 	bool TrackerCloseConnectionEx();
 
