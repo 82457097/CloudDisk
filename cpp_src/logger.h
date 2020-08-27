@@ -19,15 +19,10 @@ public:
 	Logger();
 	//Logger(const std::string& plogfile);
 	static void Log(const std::string& plogMsg);
-	void WriteMsgToFile(string& pMsg) {
-		m_logfile << pMsg << endl;
-		m_message = "";
-	}
 	~Logger();
 	
 public:
-	std::fstream m_logfile;
-	static string m_message;
+	static std::fstream m_logfile;
 };
 
 static std::string TimeStamp() {

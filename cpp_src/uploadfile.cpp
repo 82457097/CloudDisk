@@ -24,7 +24,6 @@ bool Upload::AcceptFile() {
 			for (int i = 0; i < buflen; ++i) {
 				if ((tmpch = getchar()) < 0) {
 					LOG("receive filedata successful.");
-					mylog.WriteMsgToFile(mylog.m_message);
 					break;
 				}
 				*ptemp = tmpch;

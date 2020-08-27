@@ -18,7 +18,6 @@ bool MySql::MysqlInit() {
 	}
 */
 	LOG("initial Successful.");
-	mylog.WriteMsgToFile(mylog.m_message);
 	return true;
 }
 
@@ -27,13 +26,11 @@ MYSQL* MySql::MysqlConnect() {
 	conn = mysql_init(nullptr);
 	if (conn == nullptr) {
 		LOG("Sql failed to connect!");
-		mylog.WriteMsgToFile(mylog.m_message);
 		return conn;
 	}
 	
 	mysql_real_connect(conn, "localhost", USER, PASSWORD, DB_NAME, 0, NULL, 0);
 	LOG("get conn Successful.");
-	mylog.WriteMsgToFile(mylog.m_message);
 	return conn;
 }
 
@@ -50,7 +47,6 @@ bool MySql::MysqlQuery(const char *sql) {
 	}
 
 	LOG("query sql Successful.");
-	mylog.WriteMsgToFile(mylog.m_message);
 	return true;
 }
 

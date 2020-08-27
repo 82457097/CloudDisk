@@ -22,6 +22,5 @@ public:
 	bool MysqlDisconnect();
 
 private:
-	Logger mylog;
 	MYSQL* m_conn;
 };

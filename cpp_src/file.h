@@ -21,7 +21,6 @@ public:
 	FastDFS fastDFS;
 	FastCGI fastCGI;
 	MySql mysql;
-	Logger mylog;
 	
 public:
 	File() {}
