@@ -7,6 +7,7 @@ Nginx+fastDFS+fastCGI+MySQL+Redis
 # 项目更新记录
 - 0827更新
   - 增加写日志文件功能，已验证可用。
+  - 优化log类，修复一些bug。
 
 - 0826更新
   - 修复拷贝文件传给fastDFS后，临时文件未删除bug。
