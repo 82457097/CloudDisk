@@ -5,7 +5,7 @@
 [2020.08.27] [14:22:00] Session opened.[2020.08.27] [14:22:00] Session opened.[2020.08.27] [14:22:00] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
 
 [2020.08.27] [14:23:59] Session opened.[2020.08.27] [14:23:59] Session opened.[2020.08.27] [14:23:59] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
-
+1
 [2020.08.27] [14:29:37] Session opened.
 [2020.08.27] [14:29:37] [./MySql.cpp:MysqlInit:20][LOG_NORMAL]initial Successful.
 

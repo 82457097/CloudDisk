@@ -4,6 +4,7 @@ using namespace std;
 
 bool FastDFS::FdfsClientInit() {
 	if (fdfs_client_init(CLIENT_CONF)) {
+		LOG("fdfs_client initial failed.");
 		return false;
 	}
 
@@ -13,6 +14,7 @@ bool FastDFS::FdfsClientInit() {
 bool FastDFS::TrackerGetConnection() {
 	this->ptrackerServer = tracker_get_connection();
 	if (this->ptrackerServer == nullptr) {
+		LOG("connect tracker failed.");
 		return false;
 	}
 
@@ -24,6 +26,7 @@ bool FastDFS::TrackerQueryStorageStore() {
 								&this->storageServer,
 								this->groupName,
 								&this->storePathIndex)) {
+		LOG("query storage failed.");
 		return false;
 	}
 
@@ -38,6 +41,7 @@ bool FastDFS::StorageUploadByFilename1(char* fileName, char *fileId) {
 								fileName, NULL, NULL,
 								0, this->groupName,
 								fileId)) {
+		LOG("upload file failed.");
 		return false;
 	}
 	return true;

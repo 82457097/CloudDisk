@@ -17,7 +17,6 @@ using namespace std;
 class Logger {
 public:
 	Logger();
-	//Logger(const std::string& plogfile);
 	static void Log(const std::string& plogMsg);
 	~Logger();
 	

@@ -13,7 +13,7 @@ bool Upload::AcceptFile() {
 		}
 
 		if (buflen <= 0) {
-			cout << "No data from standard input.<p>\n" << endl;
+			LOG("No data from standard input.");
 		}
 		else {
 			char tmpch;
@@ -32,7 +32,7 @@ bool Upload::AcceptFile() {
 
 			pend = ptemp;
 		}
-		//cout << fileData << endl;
+
 		ParseDataAndSave();
 		UploadFile(fileName);
 		SaveToMysql();
@@ -54,7 +54,6 @@ bool Upload::ParseDataAndSave() {
 	pfileNameBegin += strlen("filename=");  
 	char* pfileNameEnd = strchr(++pfileNameBegin, '"');  
 	strncpy(fileName, pfileNameBegin, pfileNameEnd - pfileNameBegin);
-	//cout << fileName << endl;
 	printf("<br>filename: %s<br>\n", fileName);
 
 	ptemp = strstr(pbegin, "\r\n");
@@ -95,30 +94,30 @@ bool Upload::ParseDataAndSave() {
 
 bool Upload::UploadFile(char* fileName) {
 	if (!fastDFS.FdfsClientInit()) {
-		cout << "fastdfs initial failed." << endl;
+		LOG("fastdfs initial failed.");
 		return false;
 	}
 
 	if (!fastDFS.TrackerGetConnection()) {
-		cout << "tracker initial failed." << endl;
+		LOG("tracker initial failed.");
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.TrackerQueryStorageStore()) {
-		cout << "storage initial failed." << endl;
+		LOG("storage initial failed.");
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.StorageUploadByFilename1(fileName, fileId)) {
-		cout << "StorageUploadByFilename1 initial failed." << endl;
+		LOG("StorageUploadByFilename1 initial failed.");
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}
 
 	if (!fastDFS.TrackerCloseConnectionEx()) {
-		cout << "TrackerCloseConnectionEx initial failed." << endl;
+		LOG("TrackerCloseConnectionEx initial failed.");
 		fastDFS.FdfsClientDestroy();
 		return false;
 	}

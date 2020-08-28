@@ -5,7 +5,7 @@ using namespace std;
 
 bool FastCGI::FcgiAccept() {
 	if (FCGI_Accept() < 0) {
-		cout << "FCGI_Accept start failed." << endl;
+		LOG("FCGI_Accept start failed.");
 		return false;
 	}
 
