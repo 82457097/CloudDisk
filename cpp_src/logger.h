@@ -17,29 +17,14 @@ using namespace std;
 class Logger {
 public:
 	Logger();
-	//Logger(const std::string& plogfile);
-	static void Log(const std::string& plogMsg);
 	~Logger();
+
+	static void Log(const string& logMsg);
+	static string TimeStamp();
+	static string DateStamp();
 	
-public:
-	static std::fstream m_logfile;
+private:
+	static fstream m_logfile;
 };
 
-static std::string TimeStamp() {
-	char str[9];
-	time_t a = time(0);
-	struct tm* b = localtime(&a);
-	strftime(str, 9, "%H:%M:%S", b);
-
-	return str;
-}
-
-static std::string DateStamp() {
-	char str[11];
-	time_t a = time(0);
-	struct tm* b = localtime(&a);
-	strftime(str, 11, "%Y.%m.%d", b);
-
-	return str;
-}
 
