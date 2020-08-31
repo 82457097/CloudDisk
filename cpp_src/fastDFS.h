@@ -2,6 +2,7 @@
 #include"fdfs_client.h"
 #include<iostream>
 #include<cstdlib>
+#include"logger.h"
 #define CLIENT_CONF "/etc/fdfs/client.conf"
 
 class FastDFS {

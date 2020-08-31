@@ -3,15 +3,15 @@
 int main() {
 	Upload upload;
 	if (!upload.mysql.MysqlInit()) {
-		cout << "Init failed!" << endl;
+		LOG("Init failed!");
 		return -1;
 	}
 	if (upload.AcceptFile()) {
-		cout << "Accept files failed!" << endl;
+		LOG("Accept files failed!");
 		return -1;
 	}
 	if (upload.mysql.MysqlDisconnect()) {
-		cout << "Failed to disconnect mysql connect!" << endl;
+		LOG("Failed to disconnect mysql connect!");
 		return -1;
 	}
 

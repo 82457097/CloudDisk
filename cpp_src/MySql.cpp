@@ -3,7 +3,6 @@
 bool MySql::MysqlInit() {
 	m_conn = MysqlConnect();
 	if (m_conn == nullptr) {
-		cout << "conn == nullptr." << endl;
 		return false;
 	}
 	
@@ -42,7 +41,7 @@ bool MySql::MysqlQuery(const char *sql) {
 	int retVal = mysql_query(m_conn, sql);
 
 	if (retVal) {
-		cout << "query sql failed." << endl;
+		LOG("query sql failed.");
 		return false;
 	}
 
@@ -53,6 +52,6 @@ bool MySql::MysqlQuery(const char *sql) {
 bool MySql::MysqlDisconnect() {
 	mysql_close(m_conn);
 
-	cout << "Successful to disconnect!" << endl;
+	LOG("Successful to disconnect!");
 	return true;
 }
