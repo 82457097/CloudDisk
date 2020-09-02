@@ -80,3 +80,97 @@
 
 [2020.09.02] [14:36:14] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
 
+[2020.09.02] [14:48:06] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [14:48:06] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [14:48:18] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [14:48:18] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [14:48:18] [cpp_src/uploadfile.cpp:ParseDataAndSave:100][LOG_NORMAL]Map failed.
+
+[2020.09.02] [14:50:17] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [14:50:17] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [14:50:25] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [14:50:25] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [14:50:25] [cpp_src/uploadfile.cpp:ParseDataAndSave:100][LOG_NORMAL]Map failed.
+
+[2020.09.02] [14:56:46] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [14:56:46] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [14:56:54] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [14:56:54] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [14:56:54] [cpp_src/uploadfile.cpp:ParseDataAndSave:100][LOG_NORMAL]Map failed.
+
+[2020.09.02] [14:59:27] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [14:59:27] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [14:59:40] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [14:59:40] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [14:59:40] [cpp_src/uploadfile.cpp:ParseDataAndSave:100][LOG_NORMAL]Map failed.
+
+[2020.09.02] [15:01:32] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [15:01:32] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [15:01:41] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:01:41] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [15:01:41] [cpp_src/uploadfile.cpp:ParseDataAndSave:100][LOG_NORMAL]Map failed.
+
+[2020.09.02] [15:10:56] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [15:10:56] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [15:11:19] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:11:19] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 13214
+
+[2020.09.02] [15:11:19] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+
+[2020.09.02] [15:11:19] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:11:19] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 13214
+
+[2020.09.02] [15:11:19] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+
+[2020.09.02] [15:11:22] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:11:22] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 13214
+
+[2020.09.02] [15:11:22] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+
+[2020.09.02] [15:11:51] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:11:51] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [15:11:51] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+
+[2020.09.02] [15:12:00] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:12:00] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 13214
+
+[2020.09.02] [15:12:00] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+
+[2020.09.02] [15:13:54] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [15:13:54] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [15:14:05] [cpp_src/fastCGI.cpp:FcgiAccept:12][LOG_NORMAL]FCGI_Accept successful.
+
+[2020.09.02] [15:14:05] [cpp_src/uploadfile.cpp:AcceptFile:21][LOG_NORMAL]Recieve size is 65394
+
+[2020.09.02] [15:14:06] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
+

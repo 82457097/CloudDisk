@@ -1,4 +1,0 @@
-[info] 2020/08/25 09:57:57 src/sqlapi.c-MysqlInit[68]: 数据库初始化
-[info] 2020/08/25 09:57:57 src/sqlapi.c-MysqlInit[71]: 数据库连接失败
-[info] 2020/08/25 09:57:57 src/sqlapi.c-MysqlInit[73]: 创建数据库
-[debug] 2020/08/25 09:57:57 src/sqlapi.c-MysqlInit[77]: create database junbaba charset=utf8

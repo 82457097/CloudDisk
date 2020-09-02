@@ -83,26 +83,25 @@ bool Upload::ParseDataAndSave() {
 
 	ptemp -= 2;  
 
-	//struct stat fst;
 	int fileLen = ptemp - pbegin;
-	int fd = open(fileName, O_CREAT | O_WRONLY, 0664);
-	//cout << fd << endl;
+	int fd = open(fileName, O_CREAT | O_RDWR, 0664);
 	if(fd < 0) {
-		LOG("open file failed.%d", fd);
+		LOG("open file failed");
 	}
-	//if(fstat(fd, &fst) == -1){
-	//	LOG("get file stat struct failed.");
-	//}
-	//lseek(fd, fileLen - 1, SEEK_SET);
-	//write(fd, "", 1);
+	if(lseek(fd, fileLen - 1, SEEK_SET) == -1) {
+		LOG("lseek set failed.");
+	}
+	write(fd, " ", 1);
 	
-	//void *mptr = mmap(NULL, fileLen, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-	//if(mptr == MAP_FAILED) {
-	//	LOG("Map failed.");
-	//}
-	write(fd, pbegin, fileLen);
-	//memcpy(mptr, pbegin, fileLen);
+	void *mptr = mmap(NULL, fileLen, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	if(mptr == MAP_FAILED) {
+		LOG("Map failed.");
+	}
+
+	memcpy(mptr, pbegin, fileLen);
+	
 	close(fd);
+	munmap(mptr, fileLen);
 	
 	return true;
 }
