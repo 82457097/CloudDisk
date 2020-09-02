@@ -5,6 +5,9 @@ CSDN博客地址https://blog.csdn.net/weixin_44816732/article/details/104346199
 Nginx+fastDFS+fastCGI+MySQL+Redis
 
 # 项目更新记录
+- 0902更新
+  - 修复无法正确接收图片数据流重大功能性bug
+
 - 0827更新
   - 增加写日志文件功能，已验证可用。
   - 优化log类，修复一些bug。
