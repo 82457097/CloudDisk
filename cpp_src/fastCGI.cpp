@@ -8,6 +8,10 @@ bool FastCGI::FcgiAccept() {
 		LOG("FCGI_Accept start failed.");
 		return false;
 	}
+	else {
+		LOG("FCGI_Accept successful.");
+		return true;
+	}
 
-	return true;
+	return false;
 }

@@ -58,3 +58,15 @@
 
 [2020.08.28] [23:23:43] [cpp_src/MySql.cpp:MysqlQuery:48][LOG_NORMAL]query sql Successful.
 
+[2020.09.02] [11:03:39] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [11:03:39] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [11:03:57] [cpp_src/uploadfile.cpp:AcceptFile:27][LOG_NORMAL]receive filedata successful.
+
+[2020.09.02] [11:05:07] [cpp_src/MySql.cpp:MysqlConnect:32][LOG_NORMAL]get conn Successful.
+
+[2020.09.02] [11:05:07] [cpp_src/MySql.cpp:MysqlInit:19][LOG_NORMAL]initial Successful.
+
+[2020.09.02] [11:05:29] [cpp_src/uploadfile.cpp:AcceptFile:27][LOG_NORMAL]receive filedata successful.
+

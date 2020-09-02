@@ -1,14 +1,16 @@
 #include"uplaodfile.h"
+#include<sys/mman.h>
+#include<sys/types.h>
+#include<unistd.h>
 
 using namespace std;
 
 bool Upload::AcceptFile() {
 	while (fastCGI.FcgiAccept()) {
-		
 		fastCGI.contentLen = getenv("CONTENT_LENGTH");
 		printf("Content-type: text/html\r\n\r\n");
-		
-		if (fastCGI.contentLen != NULL) {
+
+		if (fastCGI.contentLen != nullptr) {
 			buflen = strtol(fastCGI.contentLen, nullptr, 10);
 		}
 
@@ -16,20 +18,17 @@ bool Upload::AcceptFile() {
 			LOG("No data from standard input.");
 		}
 		else {
+			LOG("Recieve size is %d", buflen);
 			char tmpch;
-			
 			fileData = (char*)malloc(buflen);
 			pbegin = ptemp = fileData;
 			
 			for (int i = 0; i < buflen; ++i) {
-				if ((tmpch = getchar()) < 0) {
-					LOG("receive filedata successful.");
-					break;
-				}
+				tmpch = getchar();
 				*ptemp = tmpch;
 				++ptemp;
 			}
-
+			
 			pend = ptemp;
 		}
 
@@ -84,11 +83,27 @@ bool Upload::ParseDataAndSave() {
 
 	ptemp -= 2;  
 
-
+	//struct stat fst;
+	int fileLen = ptemp - pbegin;
 	int fd = open(fileName, O_CREAT | O_WRONLY, 0664);
-	write(fd, pbegin, ptemp - pbegin);
+	//cout << fd << endl;
+	if(fd < 0) {
+		LOG("open file failed.%d", fd);
+	}
+	//if(fstat(fd, &fst) == -1){
+	//	LOG("get file stat struct failed.");
+	//}
+	//lseek(fd, fileLen - 1, SEEK_SET);
+	//write(fd, "", 1);
+	
+	//void *mptr = mmap(NULL, fileLen, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	//if(mptr == MAP_FAILED) {
+	//	LOG("Map failed.");
+	//}
+	write(fd, pbegin, fileLen);
+	//memcpy(mptr, pbegin, fileLen);
 	close(fd);
-
+	
 	return true;
 }
 
@@ -131,7 +146,7 @@ bool Upload::UploadFile(char* fileName) {
 bool Upload::SaveToMysql() {
 	char sql[SQL_LEN] = { '\0' };
 	snprintf(sql, SQL_LEN, "insert into %s values(NULL, '%s', '%s')", TABLE_NAME, fileName, fileId);
-	cout << sql << endl;
+	//cout << sql << endl;
 	int flag = mysql.MysqlQuery(sql);
 	if (flag == 0) {
 		return true;
